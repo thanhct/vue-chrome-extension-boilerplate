@@ -1,4 +1,14 @@
 {
+  "name": "win-bcr",
+  "version": "1.0.0",
+  "manifest_version": 2,
+  "description": "a chrome extension for win-bcr",
+  "icons": {
+    "16": "assets/icons/icon_16.png",
+    "32": "assets/icons/icon_32.png",
+    "64": "assets/icons/icon_64.png",
+    "128": "assets/icons/icon_128.png"
+  },
   "background": {
     "scripts": ["./background.js"]
   },
@@ -7,33 +17,28 @@
   },
   "content_scripts": [
     {
-      "all_frames": false,
+      "all_frames": true,
       "js": ["./contentScripts.js"],
-      "matches": ["http://*/*", "https://*/*"],
+      "matches": ["<all_urls>"],
       "run_at": "document_end"
     }
   ],
-  "description": "vue-chrome-extension-boilerplate",
-  "icons": {
-    "16": "assets/icons/icon_16.png",
-    "32": "assets/icons/icon_32.png",
-    "64": "assets/icons/icon_64.png",
-    "128": "assets/icons/icon_128.png"
-  },
-  "manifest_version": 2,
-  "name": "vue-chrome-extension-boilerplate",
+  
   "options_ui": {
     "chrome_style": false,
     "page": "./options.html"
   },
   "permissions": [
+    "<all_urls>",
+    "*://*/*",
     "http://*/*",
     "https://*/*",
+    "activeTab",
     "background",
     "storage",
     "tabs",
     "webRequest"
   ],
-  "version": "1.0.0",
+  
   "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
 }
